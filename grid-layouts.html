@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layouts</title>
+    <style>
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 5px;
+  padding: 20px;
+}
+
+.col {
+  background-color: #6c63ff;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.gallery-item {
+  background-color: #ff6b6b;
+  color: white;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  gap: 10px;
+  padding: 20px;
+  height: 400px;
+}
+.dash-header {
+  grid-area: header;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 8px;
+}
+
+.dash-sidebar {
+  grid-area: sidebar;
+  background-color: #6c63ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.dash-main {
+  grid-area: main;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.dash-footer {
+  grid-area: footer;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 8px;
+}
+.pinterest {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.pin {
+  background-color: #6c63ff;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.pin1 { height: 200px; background-color: #ff6b6b; }
+.pin2 { height: 300px; background-color: #ffd93d; color: black; }
+.pin3 { height: 150px; background-color: #6bcb77; }
+.pin4 { height: 250px; background-color: #4d96ff; }
+.pin5 { height: 180px; background-color: #ff922b; }
+.pin6 { height: 320px; background-color: #cc5de8; }
+</style>
+</head>
+<body>
+    <section class="grid-12">
+  <div class="col">1</div>
+  <div class="col">2</div>
+  <div class="col">3</div>
+  <div class="col">4</div>
+  <div class="col">5</div>
+  <div class="col">6</div>
+  <div class="col">7</div>
+  <div class="col">8</div>
+  <div class="col">9</div>
+  <div class="col">10</div>
+  <div class="col">11</div>
+  <div class="col">12</div>
+</section>
+<!-- LAYOUT 2: PHOTO GALLERY -->
+<section class="gallery">
+  <div class="gallery-item">Photo 1</div>
+  <div class="gallery-item">Photo 2</div>
+  <div class="gallery-item">Photo 3</div>
+  <div class="gallery-item">Photo 4</div>
+  <div class="gallery-item">Photo 5</div>
+  <div class="gallery-item">Photo 6</div>
+</section>
+<!-- LAYOUT 3: DASHBOARD -->
+<section class="dashboard">
+  <div class="dash-header">Header</div>
+  <div class="dash-sidebar">Sidebar</div>
+  <div class="dash-main">Main Content</div>
+  <div class="dash-footer">Footer</div>
+</section>
+<!-- MINI CHALLENGE: PINTEREST GRID -->
+<section class="pinterest">
+  <div class="pin pin1">Pin 1</div>
+  <div class="pin pin2">Pin 2</div>
+  <div class="pin pin3">Pin 3</div>
+  <div class="pin pin4">Pin 4</div>
+  <div class="pin pin5">Pin 5</div>
+  <div class="pin pin6">Pin 6</div>
+</section>
+</body>
+</html>
