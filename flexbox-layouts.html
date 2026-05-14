@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Layouts</title>
+  <style>
+  /* NAVBAR FLEXBOX */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: brown;
+    padding: 15px 30px;
+  }
+
+  .logo {
+    color: white;
+    font-size: 22px;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+
+  .nav-links li {
+    color: white;
+  }
+  /* LAYOUT 2: CARD ROW */
+.card-row {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+.card2 {
+  background-color: #6c63ff;
+  color: white;
+  padding: 40px;
+  width: 200px;
+  border-radius: 10px;
+  text-align: center;
+}
+/* LAYOUT 3: HERO CENTER */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background-color: #f0f0f0;
+}
+
+.hero-content {
+  text-align: center;
+}
+.tweet-section {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.tweet-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 20px;
+  width: 500px;
+}
+
+.tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.tweet-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet-name span {
+  color: gray;
+  font-size: 14px;
+}
+
+.tweet-actions {
+  display: flex;
+  gap: 30px;
+  margin-top: 15px;
+  color: gray;
+}
+</style>
+</head>
+<body>
+<body>
+
+  <!-- LAYOUT 1: NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">Asma umar</div>
+    <ul class="nav-links">
+      <li>Home</li>
+      <li>About</li>
+      <li>Projects</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+<!-- LAYOUT 2: 3 CARD ROW -->
+<section class="cards-section">
+  <div class="card-row">
+    <div class="card2">Card 1</div>
+    <div class="card2">Card 2</div>
+    <div class="card2">Card 3</div>
+  </div>
+</section>
+<!-- LAYOUT 3: CENTER HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Main Web Developer Banugi!</h1>
+    <p>30 days challenge — Din 3</p>
+  </div>
+</section>
+<!-- LAYOUT 4: TWEET CARD -->
+<section class="tweet-section">
+  <div class="tweet-card">
+    
+    <div class="tweet-header">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Asma" 
+           width="50" height="50">
+      <div class="tweet-name">
+        <strong>Asma Umar</strong>
+        <span>@asma_dev</span>
+      </div>
+    </div>
+
+    <p class="tweet-text">
+      Aaj maine Flexbox seekha! 🎉 
+      #30DaysWebDev #CSS
+    </p>
+
+    <div class="tweet-actions">
+      <span>❤️ 24</span>
+      <span>🔁 12</span>
+      <span>💬 5</span>
+    </div>
+
+  </div>
+</section>
+</body>
+</body>
+</html>
