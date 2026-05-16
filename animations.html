@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations</title>
+    <style>
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  border: 6px solid #f0f0f0;
+  border-top: 6px solid #6c63ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.hover-card {
+  width: 250px;
+  padding: 30px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-self: center;
+}
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.anim-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 30px;
+  background: #333;
+   width: 100%;
+}
+
+.anim-nav a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.anim-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #6c63ff;
+  transition: width 0.3s ease;
+}
+
+.anim-nav a:hover::after {
+  width: 100%;
+}
+.accordion {
+  width: 500px;
+  margin: 30px auto;
+}
+
+.acc-item {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.acc-item input {
+  display: none;
+}
+
+.acc-item label {
+  display: block;
+  padding: 15px 20px;
+  background: #6c63ff;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.acc-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  background: #f9f9f9;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.acc-item input:checked ~ .acc-content {
+  max-height: 100px;
+  padding: 15px 20px;
+}
+
+</style>
+</head>
+<body>
+    <body>
+
+  <!-- 1. NAV -->
+  <nav class="anim-nav">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- 2. SPINNER -->
+  <div class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- 3. CARD -->
+  <div class="hover-card">
+    <h3>Asma Umar</h3>
+    <p>Web Developer</p>
+  </div>
+
+  <!-- 4. ACCORDION -->
+  <div class="accordion">
+    <div class="acc-item">
+      <input type="checkbox" id="acc1">
+      <label for="acc1">HTML kya hai? ▼</label>
+      <div class="acc-content">HTML ek markup language hai!</div>
+    </div>
+    <div class="acc-item">
+      <input type="checkbox" id="acc2">
+      <label for="acc2">CSS kya hai? ▼</label>
+      <div class="acc-content">CSS se webpage rangeen hota hai!</div>
+    </div>
+    <div class="acc-item">
+      <input type="checkbox" id="acc3">
+      <label for="acc3">JavaScript kya hai? ▼</label>
+      <div class="acc-content">JavaScript se interactivity aati hai!</div>
+    </div>
+  </div>
+
+</body>
+
+</body>
+</body>
+</html>
