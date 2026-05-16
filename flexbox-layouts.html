@@ -40,9 +40,21 @@
   background-color: #6c63ff;
   color: white;
   padding: 40px;
-  width: 200px;
+  width: 100%;
   border-radius: 10px;
   text-align: center;
+}
+
+@media (min-width: 480px) {
+  .card2 {
+    width: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card2 {
+    width: 30%;
+  }
 }
 /* LAYOUT 3: HERO CENTER */
 .hero {
@@ -52,7 +64,13 @@
   height: 300px;
   background-color: #f0f0f0;
 }
+.hero-content h1 {
+  font-size: clamp(20px, 4vw, 60px);
+}
 
+.hero-content p {
+  font-size: clamp(14px, 2vw, 24px);
+}
 .hero-content {
   text-align: center;
 }
@@ -92,6 +110,36 @@
   margin-top: 15px;
   color: gray;
 }
+/* Checkbox chhupaao */
+#menu-toggle {
+  display: none;
+}
+
+/* Hamburger button - sirf mobile pe dikhe */
+.hamburger {
+  display: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Mobile pe hamburger dikhe, links chhupaao */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  /* Jab checkbox check ho - links dikhaao */
+  #menu-toggle:checked ~ .nav-links {
+    display: flex;
+  }
+}
 </style>
 </head>
 <body>
@@ -99,14 +147,18 @@
 
   <!-- LAYOUT 1: NAVBAR -->
   <nav class="navbar">
-    <div class="logo">Asma umar</div>
-    <ul class="nav-links">
-      <li>Home</li>
-      <li>About</li>
-      <li>Projects</li>
-      <li>Contact</li>
-    </ul>
-  </nav>
+  <div class="logo">Asma Dev</div>
+  
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="hamburger">☰</label>
+  
+  <ul class="nav-links">
+    <li>Home</li>
+    <li>About</li>
+    <li>Projects</li>
+    <li>Contact</li>
+  </ul>
+</nav>
 <!-- LAYOUT 2: 3 CARD ROW -->
 <section class="cards-section">
   <div class="card-row">
@@ -118,7 +170,7 @@
 <!-- LAYOUT 3: CENTER HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Main Web Developer Banugi!</h1>
+    <h1>I will become a web developer!</h1>
     <p>30 days challenge — Din 3</p>
   </div>
 </section>

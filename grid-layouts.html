@@ -49,6 +49,17 @@
   padding: 20px;
   height: 400px;
 }
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+    height: auto;
+  }
+}
 .dash-header {
   grid-area: header;
   background-color: #333;
