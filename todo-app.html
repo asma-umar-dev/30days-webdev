@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TODO App</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .container{
+      background:white;
+      width:100%;
+      max-width:500px;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1{
+      text-align:center;
+      margin-bottom:20px;
+      color:#333;
+    }
+
+    .input-box{
+      display:flex;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    input{
+      flex:1;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-size:16px;
+    }
+
+    button{
+      padding:12px 18px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:15px;
+    }
+
+    .add-btn{
+      background:#007bff;
+      color:white;
+    }
+
+    .filters{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .filter-btn{
+      background:#ddd;
+    }
+
+    .active-filter{
+      background:#007bff;
+      color:white;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    li{
+      background:#f9f9f9;
+      padding:12px;
+      margin-bottom:10px;
+      border-radius:8px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .completed{
+      text-decoration:line-through;
+      opacity:0.6;
+    }
+
+    .task-buttons{
+      display:flex;
+      gap:8px;
+    }
+
+    .complete-btn{
+      background:green;
+      color:white;
+    }
+
+    .delete-btn{
+      background:red;
+      color:white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>TODO APP</h1>
+
+    <div class="input-box">
+      <input type="text" id="taskInput" placeholder="Enter task...">
+      <button class="add-btn" id="addBtn">Add</button>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active-filter" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+      <button class="filter-btn" data-filter="pending">Pending</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+  </div>
+
+<script>
+
+  const taskInput = document.getElementById("taskInput");
+  const addBtn = document.getElementById("addBtn");
+  const taskList = document.getElementById("taskList");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+
+  let tasks = [];
+
+  function renderTasks(filter = "all"){
+
+    taskList.innerHTML = "";
+
+    let filteredTasks = tasks;
+
+    if(filter === "completed"){
+      filteredTasks = tasks.filter(task => task.completed);
+    }
+
+    if(filter === "pending"){
+      filteredTasks = tasks.filter(task => !task.completed);
+    }
+
+    filteredTasks.forEach((task, index) => {
+
+      const li = document.createElement("li");
+
+      if(task.completed){
+        li.classList.add("completed");
+      }
+
+      li.innerHTML = `
+        <span>${task.text}</span>
+
+        <div class="task-buttons">
+          <button class="complete-btn">✓</button>
+          <button class="delete-btn">X</button>
+        </div>
+      `;
+
+      const completeBtn = li.querySelector(".complete-btn");
+      const deleteBtn = li.querySelector(".delete-btn");
+
+      completeBtn.addEventListener("click", () => {
+        task.completed = !task.completed;
+        renderTasks(filter);
+      });
+
+      deleteBtn.addEventListener("click", () => {
+        tasks.splice(index, 1);
+        renderTasks(filter);
+      });
+
+      taskList.appendChild(li);
+
+    });
+
+  }
+
+  addBtn.addEventListener("click", addTask);
+
+  taskInput.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+      addTask();
+    }
+  });
+
+  function addTask(){
+
+    const taskText = taskInput.value.trim();
+
+    if(taskText === ""){
+      alert("Please enter a task");
+      return;
+    }
+
+    tasks.push({
+      text: taskText,
+      completed: false
+    });
+
+    taskInput.value = "";
+
+    renderTasks();
+
+  }
+
+  filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      document.querySelector(".active-filter")
+      .classList.remove("active-filter");
+
+      button.classList.add("active-filter");
+
+      const filter = button.dataset.filter;
+
+      renderTasks(filter);
+
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
