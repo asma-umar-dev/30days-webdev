@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Todo App (All-in-One)</h2>
+    <input type="text" id="todoInput" placeholder="New task...">
+    <button onclick="addTodo()">Add Task</button>
+    <ul id="todoList"></ul>
+
+    <script>
+        // 1. STORAGE LOGIC
+        const saveTasks = (tasks) => localStorage.setItem('myTodos', JSON.stringify(tasks));
+        const getTasks = () => JSON.parse(localStorage.getItem('myTodos')) || [];
+
+        // 2. UI & TODO LOGIC
+        function render() {
+            const list = document.getElementById('todoList');
+            list.innerHTML = getTasks().map((t, i) => `<li>${t} <button onclick="remove(${i})">X</button></li>`).join('');
+        }
+
+        window.addTodo = () => {
+            const input = document.getElementById('todoInput');
+            if(input.value.trim() !== "") {
+                const tasks = getTasks();
+                tasks.push(input.value);
+                saveTasks(tasks);
+                input.value = "";
+                render();
+            }
+        };
+
+        window.remove = (i) => {
+            let tasks = getTasks();
+            tasks.splice(i, 1);
+            saveTasks(tasks);
+            render();
+        };
+
+        // 3. BANK ACCOUNT CLASS & ERROR HANDLING
+        class InsufficientFundsError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "InsufficientFundsError";
+            }
+        }
+
+        class BankAccount {
+            constructor(owner) {
+                this.owner = owner;
+                this.balance = 0;
+            }
+            deposit(amount) { this.balance += amount; }
+            withdraw(amount) {
+                if (amount > this.balance) throw new InsufficientFundsError("Balance kam hai!");
+                this.balance -= amount;
+            }
+        }
+
+        // Bank Test
+        const myAcc = new BankAccount("Asma");
+        myAcc.deposit(100);
+        try {
+            myAcc.withdraw(200);
+        } catch (e) {
+            console.error(e.name, ":", e.message);
+        }
+
+        render();
+    </script>
+</body>
+</html>
